@@ -1,0 +1,50 @@
+# --- Dados gerados por `make data` (regeneráveis a partir de api/seed_data.py) ---
+# Não versionar: são artefatos determinísticos do seed; eval/ contém o gabarito.
+data/
+agent-input/
+eval/
+
+# --- Arquivos locais não versionados ---
+docs/05-plano-implementacao.md
+docs/06-pendencias-tecnicas.md
+docs/07-backlog-diferenciais.md
+
+# --- Ambiente ---
+api/.venv/
+.venv/
+.run/
+agent/.env
+.env
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# --- Traces e resultados de experimento ---
+traces/
+results/
+*.log
+
+# --- Runtime local da aplicação ---
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# --- Frontend ---
+node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/coverage/
+*.tsbuildinfo
+.env.local
+.env.*.local
+
+# --- Sistema ---
+.DS_Store
+._*
+__MACOSX/

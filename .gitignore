@@ -8,6 +8,19 @@ eval/
 docs/05-plano-implementacao.md
 docs/06-pendencias-tecnicas.md
 docs/07-backlog-diferenciais.md
+docs/10-plano-execucao-sol.md
+docs/11-relatorio-execucao-sol.md
+
+# --- Metadados e instruções de assistentes de IA ---
+/.agents/
+/.codex/
+/.claude/
+/.cursor/
+/.aider*
+/AGENTS.md
+/CLAUDE.md
+/GEMINI.md
+/.github/copilot-instructions.md
 
 # --- Ambiente ---
 api/.venv/
@@ -15,6 +28,9 @@ api/.venv/
 .run/
 agent/.env
 .env
+.env.*
+!.env.example
+!**/.env.example
 
 # --- Python ---
 __pycache__/
@@ -22,6 +38,10 @@ __pycache__/
 *.egg-info/
 .pytest_cache/
 .ruff_cache/
+.mypy_cache/
+.coverage
+coverage.xml
+htmlcov/
 
 # --- Traces e resultados de experimento ---
 traces/
@@ -29,11 +49,19 @@ results/
 *.log
 
 # --- Runtime local da aplicação ---
+/runtime/
 *.db
 *.db-shm
 *.db-wal
+*.db-journal
 *.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.sqlite-journal
 *.sqlite3
+*.sqlite3-shm
+*.sqlite3-wal
+*.sqlite3-journal
 
 # --- Frontend ---
 node_modules/
@@ -48,3 +76,11 @@ frontend/coverage/
 .DS_Store
 ._*
 __MACOSX/
+Thumbs.db
+
+# --- Editores e arquivos temporários ---
+.idea/
+.vscode/
+*.swp
+*.swo
+*~

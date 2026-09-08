@@ -1,0 +1,10 @@
+FROM python:3.12-slim
+WORKDIR /app
+COPY backend /app/backend
+COPY api-tractian/agent-input /app/api-tractian/agent-input
+RUN pip install --no-cache-dir /app/backend
+RUN mkdir -p /app/runtime
+WORKDIR /app/backend
+ENV APP_HOST=0.0.0.0 APP_PORT=8001 APP_DATABASE_PATH=/app/runtime/agent.sqlite3 INDUSTRIAL_API_URL=http://industrial:8000 DEMO_CASES_PATH=/app/api-tractian/agent-input/cases.json
+EXPOSE 8001
+CMD ["python", "-m", "uvicorn", "tractian_agent.api.main:app", "--host", "0.0.0.0", "--port", "8001"]

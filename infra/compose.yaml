@@ -1,0 +1,41 @@
+services:
+  industrial:
+    build:
+      context: ..
+      dockerfile: infra/Dockerfile.industrial
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/docs')"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  backend:
+    build:
+      context: ..
+      dockerfile: infra/Dockerfile.backend
+    environment:
+      INDUSTRIAL_API_URL: http://industrial:8000
+      APP_DATABASE_PATH: /app/runtime/agent.sqlite3
+      DEMO_CASES_PATH: /app/api-tractian/agent-input/cases.json
+      CORS_ORIGINS: http://localhost:8080
+    volumes:
+      - agent-runtime:/app/runtime
+    ports:
+      - "8001:8001"
+    depends_on:
+      industrial:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ..
+      dockerfile: infra/Dockerfile.frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+
+volumes:
+  agent-runtime:

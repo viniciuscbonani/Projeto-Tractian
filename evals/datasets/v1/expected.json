@@ -1,0 +1,3869 @@
+[
+  {
+    "id": "eval_v1_original_tkt_inv_04_v1",
+    "ticket_id": "EVAL-001-V1",
+    "scenario_id": "original_tkt_inv_04",
+    "split": "validation",
+    "root_question": "Por que nenhum insight/notificação foi gerado antes da quebra?",
+    "mode": "inconclusive",
+    "expected_intent": "break_without_alert",
+    "expected_decision": "escalar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "baseline",
+      "learning",
+      "dados",
+      "humana"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_G501",
+        "note": "config, sensor_status=offline"
+      },
+      {
+        "step": "GET /assets/asset_G501/baseline",
+        "note": "state=learning"
+      },
+      {
+        "step": "GET /assets/asset_G501/data-quality",
+        "note": "completeness baixa, gap"
+      },
+      {
+        "step": "GET /assets/asset_G501/rms",
+        "note": "mode=unavailable"
+      },
+      {
+        "step": "POST /cases/case_tkt_inv_04/escalate",
+        "note": "escalar para humano"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_inv_04_v2",
+    "ticket_id": "EVAL-001-V2",
+    "scenario_id": "original_tkt_inv_04",
+    "split": "validation",
+    "root_question": "Por que nenhum insight/notificação foi gerado antes da quebra?",
+    "mode": "inconclusive",
+    "expected_intent": "break_without_alert",
+    "expected_decision": "escalar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "baseline",
+      "learning",
+      "dados",
+      "humana"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_G501",
+        "note": "config, sensor_status=offline"
+      },
+      {
+        "step": "GET /assets/asset_G501/baseline",
+        "note": "state=learning"
+      },
+      {
+        "step": "GET /assets/asset_G501/data-quality",
+        "note": "completeness baixa, gap"
+      },
+      {
+        "step": "GET /assets/asset_G501/rms",
+        "note": "mode=unavailable"
+      },
+      {
+        "step": "POST /cases/case_tkt_inv_04/escalate",
+        "note": "escalar para humano"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_inv_04_v3",
+    "ticket_id": "EVAL-001-V3",
+    "scenario_id": "original_tkt_inv_04",
+    "split": "validation",
+    "root_question": "Por que nenhum insight/notificação foi gerado antes da quebra?",
+    "mode": "inconclusive",
+    "expected_intent": "break_without_alert",
+    "expected_decision": "escalar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "baseline",
+      "learning",
+      "dados",
+      "humana"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_G501",
+        "note": "config, sensor_status=offline"
+      },
+      {
+        "step": "GET /assets/asset_G501/baseline",
+        "note": "state=learning"
+      },
+      {
+        "step": "GET /assets/asset_G501/data-quality",
+        "note": "completeness baixa, gap"
+      },
+      {
+        "step": "GET /assets/asset_G501/rms",
+        "note": "mode=unavailable"
+      },
+      {
+        "step": "POST /cases/case_tkt_inv_04/escalate",
+        "note": "escalar para humano"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_inv_05_v1",
+    "ticket_id": "EVAL-002-V1",
+    "scenario_id": "original_tkt_inv_05",
+    "split": "development",
+    "root_question": "Por que não há insight apesar da tendência de RMS?",
+    "mode": "pending",
+    "expected_intent": "rms_without_insight",
+    "expected_decision": "recomendar",
+    "expected_recommendation": "reprocess_analysis",
+    "expected_answer_terms": [
+      "rms",
+      "limiar",
+      "atrasado"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_C710/rms",
+        "note": "tendência + alarm_threshold ultrapassado"
+      },
+      {
+        "step": "GET /assets/asset_C710/baseline",
+        "note": "established"
+      },
+      {
+        "step": "GET /assets/asset_C710/analyses?status=pending",
+        "note": "status=pending"
+      },
+      {
+        "step": "GET /models/mdl_vib_v3",
+        "note": "processing_state=delayed"
+      },
+      {
+        "step": "POST /analyses/an_9902/reprocess",
+        "note": "justificativa: tendência acima do limiar + processamento atrasado -> accepted"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_inv_05_v2",
+    "ticket_id": "EVAL-002-V2",
+    "scenario_id": "original_tkt_inv_05",
+    "split": "development",
+    "root_question": "Por que não há insight apesar da tendência de RMS?",
+    "mode": "pending",
+    "expected_intent": "rms_without_insight",
+    "expected_decision": "recomendar",
+    "expected_recommendation": "reprocess_analysis",
+    "expected_answer_terms": [
+      "rms",
+      "limiar",
+      "atrasado"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_C710/rms",
+        "note": "tendência + alarm_threshold ultrapassado"
+      },
+      {
+        "step": "GET /assets/asset_C710/baseline",
+        "note": "established"
+      },
+      {
+        "step": "GET /assets/asset_C710/analyses?status=pending",
+        "note": "status=pending"
+      },
+      {
+        "step": "GET /models/mdl_vib_v3",
+        "note": "processing_state=delayed"
+      },
+      {
+        "step": "POST /analyses/an_9902/reprocess",
+        "note": "justificativa: tendência acima do limiar + processamento atrasado -> accepted"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_inv_05_v3",
+    "ticket_id": "EVAL-002-V3",
+    "scenario_id": "original_tkt_inv_05",
+    "split": "development",
+    "root_question": "Por que não há insight apesar da tendência de RMS?",
+    "mode": "pending",
+    "expected_intent": "rms_without_insight",
+    "expected_decision": "recomendar",
+    "expected_recommendation": "reprocess_analysis",
+    "expected_answer_terms": [
+      "rms",
+      "limiar",
+      "atrasado"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_C710/rms",
+        "note": "tendência + alarm_threshold ultrapassado"
+      },
+      {
+        "step": "GET /assets/asset_C710/baseline",
+        "note": "established"
+      },
+      {
+        "step": "GET /assets/asset_C710/analyses?status=pending",
+        "note": "status=pending"
+      },
+      {
+        "step": "GET /models/mdl_vib_v3",
+        "note": "processing_state=delayed"
+      },
+      {
+        "step": "POST /analyses/an_9902/reprocess",
+        "note": "justificativa: tendência acima do limiar + processamento atrasado -> accepted"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_inv_06_v1",
+    "ticket_id": "EVAL-003-V1",
+    "scenario_id": "original_tkt_inv_06",
+    "split": "development",
+    "root_question": "O insight é falso positivo?",
+    "mode": "conflict",
+    "expected_intent": "possible_false_positive",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "baseline",
+      "invalidado",
+      "folga"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /analyses/an_9903",
+        "note": "imbalance, baseline_state_at_detection=invalidated"
+      },
+      {
+        "step": "GET /assets/asset_S420/baseline",
+        "note": "state=invalidated"
+      },
+      {
+        "step": "GET /assets/asset_S420/spectrum",
+        "note": "1x baixo não sustenta desbalanceamento"
+      },
+      {
+        "step": "GET /analyses/an_9904",
+        "note": "conflito: especialista diz looseness"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_inv_06_v2",
+    "ticket_id": "EVAL-003-V2",
+    "scenario_id": "original_tkt_inv_06",
+    "split": "development",
+    "root_question": "O insight é falso positivo?",
+    "mode": "conflict",
+    "expected_intent": "possible_false_positive",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "baseline",
+      "invalidado",
+      "folga"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /analyses/an_9903",
+        "note": "imbalance, baseline_state_at_detection=invalidated"
+      },
+      {
+        "step": "GET /assets/asset_S420/baseline",
+        "note": "state=invalidated"
+      },
+      {
+        "step": "GET /assets/asset_S420/spectrum",
+        "note": "1x baixo não sustenta desbalanceamento"
+      },
+      {
+        "step": "GET /analyses/an_9904",
+        "note": "conflito: especialista diz looseness"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_inv_06_v3",
+    "ticket_id": "EVAL-003-V3",
+    "scenario_id": "original_tkt_inv_06",
+    "split": "development",
+    "root_question": "O insight é falso positivo?",
+    "mode": "conflict",
+    "expected_intent": "possible_false_positive",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "baseline",
+      "invalidado",
+      "folga"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /analyses/an_9903",
+        "note": "imbalance, baseline_state_at_detection=invalidated"
+      },
+      {
+        "step": "GET /assets/asset_S420/baseline",
+        "note": "state=invalidated"
+      },
+      {
+        "step": "GET /assets/asset_S420/spectrum",
+        "note": "1x baixo não sustenta desbalanceamento"
+      },
+      {
+        "step": "GET /analyses/an_9904",
+        "note": "conflito: especialista diz looseness"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_inv_07_v1",
+    "ticket_id": "EVAL-004-V1",
+    "scenario_id": "original_tkt_inv_07",
+    "split": "test",
+    "root_question": "É falha elétrica ou mecânica?",
+    "mode": "partial",
+    "expected_intent": "electrical_or_mechanical",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "120",
+      "ausente",
+      "confirmar"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_M605/rms",
+        "note": "salto abrupto"
+      },
+      {
+        "step": "GET /assets/asset_M605/spectrum",
+        "note": "mode=partial, 2x f-linha?"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_inv_07_v2",
+    "ticket_id": "EVAL-004-V2",
+    "scenario_id": "original_tkt_inv_07",
+    "split": "test",
+    "root_question": "É falha elétrica ou mecânica?",
+    "mode": "partial",
+    "expected_intent": "electrical_or_mechanical",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "120",
+      "ausente",
+      "confirmar"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_M605/rms",
+        "note": "salto abrupto"
+      },
+      {
+        "step": "GET /assets/asset_M605/spectrum",
+        "note": "mode=partial, 2x f-linha?"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_inv_07_v3",
+    "ticket_id": "EVAL-004-V3",
+    "scenario_id": "original_tkt_inv_07",
+    "split": "test",
+    "root_question": "É falha elétrica ou mecânica?",
+    "mode": "partial",
+    "expected_intent": "electrical_or_mechanical",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "120",
+      "ausente",
+      "confirmar"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_M605/rms",
+        "note": "salto abrupto"
+      },
+      {
+        "step": "GET /assets/asset_M605/spectrum",
+        "note": "mode=partial, 2x f-linha?"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_inv_08_v1",
+    "ticket_id": "EVAL-005-V1",
+    "scenario_id": "original_tkt_inv_08",
+    "split": "test",
+    "root_question": "Qual diagnóstico prevalece?",
+    "mode": "conflict",
+    "expected_intent": "divergent_diagnoses",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "sub-harm",
+      "base solta"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_M205/analyses",
+        "note": "duas análises conflitantes"
+      },
+      {
+        "step": "GET /analyses/an_9907",
+        "note": "misalignment"
+      },
+      {
+        "step": "GET /analyses/an_9908",
+        "note": "looseness (especialista)"
+      },
+      {
+        "step": "GET /assets/asset_M205/spectrum",
+        "note": "subharmônicos sustentam looseness"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_inv_08_v2",
+    "ticket_id": "EVAL-005-V2",
+    "scenario_id": "original_tkt_inv_08",
+    "split": "test",
+    "root_question": "Qual diagnóstico prevalece?",
+    "mode": "conflict",
+    "expected_intent": "divergent_diagnoses",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "sub-harm",
+      "base solta"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_M205/analyses",
+        "note": "duas análises conflitantes"
+      },
+      {
+        "step": "GET /analyses/an_9907",
+        "note": "misalignment"
+      },
+      {
+        "step": "GET /analyses/an_9908",
+        "note": "looseness (especialista)"
+      },
+      {
+        "step": "GET /assets/asset_M205/spectrum",
+        "note": "subharmônicos sustentam looseness"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_inv_08_v3",
+    "ticket_id": "EVAL-005-V3",
+    "scenario_id": "original_tkt_inv_08",
+    "split": "test",
+    "root_question": "Qual diagnóstico prevalece?",
+    "mode": "conflict",
+    "expected_intent": "divergent_diagnoses",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "sub-harm",
+      "base solta"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_M205/analyses",
+        "note": "duas análises conflitantes"
+      },
+      {
+        "step": "GET /analyses/an_9907",
+        "note": "misalignment"
+      },
+      {
+        "step": "GET /analyses/an_9908",
+        "note": "looseness (especialista)"
+      },
+      {
+        "step": "GET /assets/asset_M205/spectrum",
+        "note": "subharmônicos sustentam looseness"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_inv_09_v1",
+    "ticket_id": "EVAL-006-V1",
+    "scenario_id": "original_tkt_inv_09",
+    "split": "test",
+    "root_question": "A análise está stale por baseline invalidated?",
+    "mode": "stale",
+    "expected_intent": "stale_after_maintenance",
+    "expected_decision": "recomendar",
+    "expected_recommendation": "reprocess_analysis",
+    "expected_answer_terms": [
+      "desatualizada",
+      "baseline",
+      "reprocess"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /analyses/an_9906",
+        "note": "status=stale"
+      },
+      {
+        "step": "GET /assets/asset_B204/baseline",
+        "note": "state=invalidated"
+      },
+      {
+        "step": "POST /analyses/an_9906/reprocess",
+        "note": "justificativa: rolamento trocado, baseline invalidated"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_inv_09_v2",
+    "ticket_id": "EVAL-006-V2",
+    "scenario_id": "original_tkt_inv_09",
+    "split": "test",
+    "root_question": "A análise está stale por baseline invalidated?",
+    "mode": "stale",
+    "expected_intent": "stale_after_maintenance",
+    "expected_decision": "recomendar",
+    "expected_recommendation": "reprocess_analysis",
+    "expected_answer_terms": [
+      "desatualizada",
+      "baseline",
+      "reprocess"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /analyses/an_9906",
+        "note": "status=stale"
+      },
+      {
+        "step": "GET /assets/asset_B204/baseline",
+        "note": "state=invalidated"
+      },
+      {
+        "step": "POST /analyses/an_9906/reprocess",
+        "note": "justificativa: rolamento trocado, baseline invalidated"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_inv_09_v3",
+    "ticket_id": "EVAL-006-V3",
+    "scenario_id": "original_tkt_inv_09",
+    "split": "test",
+    "root_question": "A análise está stale por baseline invalidated?",
+    "mode": "stale",
+    "expected_intent": "stale_after_maintenance",
+    "expected_decision": "recomendar",
+    "expected_recommendation": "reprocess_analysis",
+    "expected_answer_terms": [
+      "desatualizada",
+      "baseline",
+      "reprocess"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /analyses/an_9906",
+        "note": "status=stale"
+      },
+      {
+        "step": "GET /assets/asset_B204/baseline",
+        "note": "state=invalidated"
+      },
+      {
+        "step": "POST /analyses/an_9906/reprocess",
+        "note": "justificativa: rolamento trocado, baseline invalidated"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_inv_10_v1",
+    "ticket_id": "EVAL-007-V1",
+    "scenario_id": "original_tkt_inv_10",
+    "split": "validation",
+    "root_question": "A confiança é mal-calibrada frente à qualidade?",
+    "mode": "partial",
+    "expected_intent": "poor_signal_quality",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "completude",
+      "snr",
+      "abaixo"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /analyses/an_9909",
+        "note": "confidence alta + low_signal_quality"
+      },
+      {
+        "step": "GET /assets/asset_V301/data-quality",
+        "note": "completeness/snr baixo"
+      },
+      {
+        "step": "GET /models/mdl_vib_v3",
+        "note": "min_snr_db=12, abaixo do medido"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_inv_10_v2",
+    "ticket_id": "EVAL-007-V2",
+    "scenario_id": "original_tkt_inv_10",
+    "split": "validation",
+    "root_question": "A confiança é mal-calibrada frente à qualidade?",
+    "mode": "partial",
+    "expected_intent": "poor_signal_quality",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "completude",
+      "snr",
+      "abaixo"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /analyses/an_9909",
+        "note": "confidence alta + low_signal_quality"
+      },
+      {
+        "step": "GET /assets/asset_V301/data-quality",
+        "note": "completeness/snr baixo"
+      },
+      {
+        "step": "GET /models/mdl_vib_v3",
+        "note": "min_snr_db=12, abaixo do medido"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_inv_10_v3",
+    "ticket_id": "EVAL-007-V3",
+    "scenario_id": "original_tkt_inv_10",
+    "split": "validation",
+    "root_question": "A confiança é mal-calibrada frente à qualidade?",
+    "mode": "partial",
+    "expected_intent": "poor_signal_quality",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "completude",
+      "snr",
+      "abaixo"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /analyses/an_9909",
+        "note": "confidence alta + low_signal_quality"
+      },
+      {
+        "step": "GET /assets/asset_V301/data-quality",
+        "note": "completeness/snr baixo"
+      },
+      {
+        "step": "GET /models/mdl_vib_v3",
+        "note": "min_snr_db=12, abaixo do medido"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_inv_11_v1",
+    "ticket_id": "EVAL-008-V1",
+    "scenario_id": "original_tkt_inv_11",
+    "split": "development",
+    "root_question": "O modelo cobre e aprende baseline para motor DC?",
+    "mode": "partial",
+    "expected_intent": "model_coverage",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "motor cc",
+      "baseline",
+      "sintom"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /models/mdl_vib_v3",
+        "note": "coverage: motor_dc supported, can_learn_baseline=false"
+      },
+      {
+        "step": "GET /assets/asset_M102/baseline",
+        "note": "learnable=false, state=learning"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_inv_11_v2",
+    "ticket_id": "EVAL-008-V2",
+    "scenario_id": "original_tkt_inv_11",
+    "split": "development",
+    "root_question": "O modelo cobre e aprende baseline para motor DC?",
+    "mode": "partial",
+    "expected_intent": "model_coverage",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "motor cc",
+      "baseline",
+      "sintom"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /models/mdl_vib_v3",
+        "note": "coverage: motor_dc supported, can_learn_baseline=false"
+      },
+      {
+        "step": "GET /assets/asset_M102/baseline",
+        "note": "learnable=false, state=learning"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_inv_11_v3",
+    "ticket_id": "EVAL-008-V3",
+    "scenario_id": "original_tkt_inv_11",
+    "split": "development",
+    "root_question": "O modelo cobre e aprende baseline para motor DC?",
+    "mode": "partial",
+    "expected_intent": "model_coverage",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "motor cc",
+      "baseline",
+      "sintom"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /models/mdl_vib_v3",
+        "note": "coverage: motor_dc supported, can_learn_baseline=false"
+      },
+      {
+        "step": "GET /assets/asset_M102/baseline",
+        "note": "learnable=false, state=learning"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_inv_11b_v1",
+    "ticket_id": "EVAL-009-V1",
+    "scenario_id": "original_tkt_inv_11b",
+    "split": "development",
+    "root_question": "Como detectar lubrificação sem baseline?",
+    "mode": "partial",
+    "expected_intent": "symptom_without_baseline",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "sintom",
+      "sem baseline"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /analyses/an_9905",
+        "note": "detection_mode=symptom"
+      },
+      {
+        "step": "GET /assets/asset_M208/baseline",
+        "note": "state=learning, detection_mode=symptom"
+      },
+      {
+        "step": "GET /knowledge/search?q=lubrificação",
+        "note": "orientação"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_inv_11b_v2",
+    "ticket_id": "EVAL-009-V2",
+    "scenario_id": "original_tkt_inv_11b",
+    "split": "development",
+    "root_question": "Como detectar lubrificação sem baseline?",
+    "mode": "partial",
+    "expected_intent": "symptom_without_baseline",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "sintom",
+      "sem baseline"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /analyses/an_9905",
+        "note": "detection_mode=symptom"
+      },
+      {
+        "step": "GET /assets/asset_M208/baseline",
+        "note": "state=learning, detection_mode=symptom"
+      },
+      {
+        "step": "GET /knowledge/search?q=lubrificação",
+        "note": "orientação"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_inv_11b_v3",
+    "ticket_id": "EVAL-009-V3",
+    "scenario_id": "original_tkt_inv_11b",
+    "split": "development",
+    "root_question": "Como detectar lubrificação sem baseline?",
+    "mode": "partial",
+    "expected_intent": "symptom_without_baseline",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "sintom",
+      "sem baseline"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /analyses/an_9905",
+        "note": "detection_mode=symptom"
+      },
+      {
+        "step": "GET /assets/asset_M208/baseline",
+        "note": "state=learning, detection_mode=symptom"
+      },
+      {
+        "step": "GET /knowledge/search?q=lubrificação",
+        "note": "orientação"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_exe_12_v1",
+    "ticket_id": "EVAL-010-V1",
+    "scenario_id": "original_tkt_exe_12",
+    "split": "test",
+    "root_question": "Reprocessar análise com justificativa.",
+    "mode": "stale",
+    "expected_intent": "reprocess",
+    "expected_decision": "recomendar",
+    "expected_recommendation": "reprocess_analysis",
+    "expected_answer_terms": [],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /analyses/an_9906",
+        "note": "stale"
+      },
+      {
+        "step": "GET /assets/asset_B204/baseline",
+        "note": "invalidated"
+      },
+      {
+        "step": "POST /analyses/an_9906/reprocess",
+        "note": "justificativa válida -> accepted"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_exe_12_v2",
+    "ticket_id": "EVAL-010-V2",
+    "scenario_id": "original_tkt_exe_12",
+    "split": "test",
+    "root_question": "Reprocessar análise com justificativa.",
+    "mode": "stale",
+    "expected_intent": "reprocess",
+    "expected_decision": "recomendar",
+    "expected_recommendation": "reprocess_analysis",
+    "expected_answer_terms": [],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /analyses/an_9906",
+        "note": "stale"
+      },
+      {
+        "step": "GET /assets/asset_B204/baseline",
+        "note": "invalidated"
+      },
+      {
+        "step": "POST /analyses/an_9906/reprocess",
+        "note": "justificativa válida -> accepted"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_exe_12_v3",
+    "ticket_id": "EVAL-010-V3",
+    "scenario_id": "original_tkt_exe_12",
+    "split": "test",
+    "root_question": "Reprocessar análise com justificativa.",
+    "mode": "stale",
+    "expected_intent": "reprocess",
+    "expected_decision": "recomendar",
+    "expected_recommendation": "reprocess_analysis",
+    "expected_answer_terms": [],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /analyses/an_9906",
+        "note": "stale"
+      },
+      {
+        "step": "GET /assets/asset_B204/baseline",
+        "note": "invalidated"
+      },
+      {
+        "step": "POST /analyses/an_9906/reprocess",
+        "note": "justificativa válida -> accepted"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_exe_16_v1",
+    "ticket_id": "EVAL-011-V1",
+    "scenario_id": "original_tkt_exe_16",
+    "split": "validation",
+    "root_question": "Escalar para humano.",
+    "mode": "unavailable",
+    "expected_intent": "explicit_escalation",
+    "expected_decision": "escalar",
+    "expected_recommendation": "escalate_case",
+    "expected_answer_terms": [],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "POST /cases/case_tkt_exe_16/escalate",
+        "note": "justificativa: dados ausentes + baseline learning + quebra"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_exe_16_v2",
+    "ticket_id": "EVAL-011-V2",
+    "scenario_id": "original_tkt_exe_16",
+    "split": "validation",
+    "root_question": "Escalar para humano.",
+    "mode": "unavailable",
+    "expected_intent": "explicit_escalation",
+    "expected_decision": "escalar",
+    "expected_recommendation": "escalate_case",
+    "expected_answer_terms": [],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "POST /cases/case_tkt_exe_16/escalate",
+        "note": "justificativa: dados ausentes + baseline learning + quebra"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_exe_16_v3",
+    "ticket_id": "EVAL-011-V3",
+    "scenario_id": "original_tkt_exe_16",
+    "split": "validation",
+    "root_question": "Escalar para humano.",
+    "mode": "unavailable",
+    "expected_intent": "explicit_escalation",
+    "expected_decision": "escalar",
+    "expected_recommendation": "escalate_case",
+    "expected_answer_terms": [],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "POST /cases/case_tkt_exe_16/escalate",
+        "note": "justificativa: dados ausentes + baseline learning + quebra"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_ctx_01_v1",
+    "ticket_id": "EVAL-012-V1",
+    "scenario_id": "original_tkt_ctx_01",
+    "split": "development",
+    "root_question": "Recuperar o procedimento aplicável ao ativo e falha.",
+    "mode": "partial",
+    "expected_intent": "bearing_procedure",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "torque",
+      "fabricante",
+      "baseline"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_M101",
+        "note": "config (rolamento NU 310, rpm)"
+      },
+      {
+        "step": "GET /knowledge/search?q=troca de rolamento",
+        "note": "procedimento kb_proc_001"
+      },
+      {
+        "step": "GET /knowledge/kb_proc_001",
+        "note": "passos + nota baseline invalidated"
+      },
+      {
+        "step": "GET /assets/asset_M101/baseline",
+        "note": "contexto de invalidação pós-troca"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_ctx_01_v2",
+    "ticket_id": "EVAL-012-V2",
+    "scenario_id": "original_tkt_ctx_01",
+    "split": "development",
+    "root_question": "Recuperar o procedimento aplicável ao ativo e falha.",
+    "mode": "partial",
+    "expected_intent": "bearing_procedure",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "torque",
+      "fabricante",
+      "baseline"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_M101",
+        "note": "config (rolamento NU 310, rpm)"
+      },
+      {
+        "step": "GET /knowledge/search?q=troca de rolamento",
+        "note": "procedimento kb_proc_001"
+      },
+      {
+        "step": "GET /knowledge/kb_proc_001",
+        "note": "passos + nota baseline invalidated"
+      },
+      {
+        "step": "GET /assets/asset_M101/baseline",
+        "note": "contexto de invalidação pós-troca"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_ctx_01_v3",
+    "ticket_id": "EVAL-012-V3",
+    "scenario_id": "original_tkt_ctx_01",
+    "split": "development",
+    "root_question": "Recuperar o procedimento aplicável ao ativo e falha.",
+    "mode": "partial",
+    "expected_intent": "bearing_procedure",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "torque",
+      "fabricante",
+      "baseline"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_M101",
+        "note": "config (rolamento NU 310, rpm)"
+      },
+      {
+        "step": "GET /knowledge/search?q=troca de rolamento",
+        "note": "procedimento kb_proc_001"
+      },
+      {
+        "step": "GET /knowledge/kb_proc_001",
+        "note": "passos + nota baseline invalidated"
+      },
+      {
+        "step": "GET /assets/asset_M101/baseline",
+        "note": "contexto de invalidação pós-troca"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_ctx_02_v1",
+    "ticket_id": "EVAL-013-V1",
+    "scenario_id": "original_tkt_ctx_02",
+    "split": "test",
+    "root_question": "Definir termo via glossário e relacionar ao espectro do ativo.",
+    "mode": "partial",
+    "expected_intent": "bpfo_definition",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "pista externa",
+      "espectro"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /knowledge/search?q=BPFO",
+        "note": "glossário kb_glos_001"
+      },
+      {
+        "step": "GET /knowledge/kb_glos_001",
+        "note": "definição BPFO"
+      },
+      {
+        "step": "GET /assets/asset_B204/spectrum",
+        "note": "pico em BPFO?"
+      },
+      {
+        "step": "GET /assets/asset_B204/analyses",
+        "note": "análise usa BPFO como evidência?"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_ctx_02_v2",
+    "ticket_id": "EVAL-013-V2",
+    "scenario_id": "original_tkt_ctx_02",
+    "split": "test",
+    "root_question": "Definir termo via glossário e relacionar ao espectro do ativo.",
+    "mode": "partial",
+    "expected_intent": "bpfo_definition",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "pista externa",
+      "espectro"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /knowledge/search?q=BPFO",
+        "note": "glossário kb_glos_001"
+      },
+      {
+        "step": "GET /knowledge/kb_glos_001",
+        "note": "definição BPFO"
+      },
+      {
+        "step": "GET /assets/asset_B204/spectrum",
+        "note": "pico em BPFO?"
+      },
+      {
+        "step": "GET /assets/asset_B204/analyses",
+        "note": "análise usa BPFO como evidência?"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_ctx_02_v3",
+    "ticket_id": "EVAL-013-V3",
+    "scenario_id": "original_tkt_ctx_02",
+    "split": "test",
+    "root_question": "Definir termo via glossário e relacionar ao espectro do ativo.",
+    "mode": "partial",
+    "expected_intent": "bpfo_definition",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "pista externa",
+      "espectro"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /knowledge/search?q=BPFO",
+        "note": "glossário kb_glos_001"
+      },
+      {
+        "step": "GET /knowledge/kb_glos_001",
+        "note": "definição BPFO"
+      },
+      {
+        "step": "GET /assets/asset_B204/spectrum",
+        "note": "pico em BPFO?"
+      },
+      {
+        "step": "GET /assets/asset_B204/analyses",
+        "note": "análise usa BPFO como evidência?"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_ctx_03_v1",
+    "ticket_id": "EVAL-014-V1",
+    "scenario_id": "original_tkt_ctx_03",
+    "split": "validation",
+    "root_question": "Explicar que o limiar deriva do baseline aprendido, não de norma fixa.",
+    "mode": "partial",
+    "expected_intent": "rms_threshold",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "referência",
+      "tolerância",
+      "tabela fixa"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /knowledge/search?q=limiar",
+        "note": "orientação kb_guid_001 (alarme derivado do baseline)"
+      },
+      {
+        "step": "GET /assets/asset_V301/baseline",
+        "note": "features reference+tolerance"
+      },
+      {
+        "step": "GET /assets/asset_V301/rms",
+        "note": "alarm_threshold derivado"
+      },
+      {
+        "step": "GET /assets/asset_V301/data-quality",
+        "note": "qualidade afeta confiança no limiar"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_ctx_03_v2",
+    "ticket_id": "EVAL-014-V2",
+    "scenario_id": "original_tkt_ctx_03",
+    "split": "validation",
+    "root_question": "Explicar que o limiar deriva do baseline aprendido, não de norma fixa.",
+    "mode": "partial",
+    "expected_intent": "rms_threshold",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "referência",
+      "tolerância",
+      "tabela fixa"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /knowledge/search?q=limiar",
+        "note": "orientação kb_guid_001 (alarme derivado do baseline)"
+      },
+      {
+        "step": "GET /assets/asset_V301/baseline",
+        "note": "features reference+tolerance"
+      },
+      {
+        "step": "GET /assets/asset_V301/rms",
+        "note": "alarm_threshold derivado"
+      },
+      {
+        "step": "GET /assets/asset_V301/data-quality",
+        "note": "qualidade afeta confiança no limiar"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_ctx_03_v3",
+    "ticket_id": "EVAL-014-V3",
+    "scenario_id": "original_tkt_ctx_03",
+    "split": "validation",
+    "root_question": "Explicar que o limiar deriva do baseline aprendido, não de norma fixa.",
+    "mode": "partial",
+    "expected_intent": "rms_threshold",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "referência",
+      "tolerância",
+      "tabela fixa"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /knowledge/search?q=limiar",
+        "note": "orientação kb_guid_001 (alarme derivado do baseline)"
+      },
+      {
+        "step": "GET /assets/asset_V301/baseline",
+        "note": "features reference+tolerance"
+      },
+      {
+        "step": "GET /assets/asset_V301/rms",
+        "note": "alarm_threshold derivado"
+      },
+      {
+        "step": "GET /assets/asset_V301/data-quality",
+        "note": "qualidade afeta confiança no limiar"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_exe_13_v1",
+    "ticket_id": "EVAL-015-V1",
+    "scenario_id": "original_tkt_exe_13",
+    "split": "development",
+    "root_question": "Escalar internamente para análise especializada com contexto e justificativa.",
+    "mode": "pending",
+    "expected_intent": "request_specialist",
+    "expected_decision": "recomendar",
+    "expected_recommendation": "request_specialist",
+    "expected_answer_terms": [],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_C710/analyses",
+        "note": "an_9902 status=pending"
+      },
+      {
+        "step": "GET /analyses/an_9902",
+        "note": "evidência, confiança, baseline established"
+      },
+      {
+        "step": "GET /assets/asset_C710/baseline",
+        "note": "established (desvio real)"
+      },
+      {
+        "step": "POST /analyses/an_9902/request-specialist",
+        "note": "justificativa: delayed+pending+desvio -> accepted"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_exe_13_v2",
+    "ticket_id": "EVAL-015-V2",
+    "scenario_id": "original_tkt_exe_13",
+    "split": "development",
+    "root_question": "Escalar internamente para análise especializada com contexto e justificativa.",
+    "mode": "pending",
+    "expected_intent": "request_specialist",
+    "expected_decision": "recomendar",
+    "expected_recommendation": "request_specialist",
+    "expected_answer_terms": [],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_C710/analyses",
+        "note": "an_9902 status=pending"
+      },
+      {
+        "step": "GET /analyses/an_9902",
+        "note": "evidência, confiança, baseline established"
+      },
+      {
+        "step": "GET /assets/asset_C710/baseline",
+        "note": "established (desvio real)"
+      },
+      {
+        "step": "POST /analyses/an_9902/request-specialist",
+        "note": "justificativa: delayed+pending+desvio -> accepted"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_exe_13_v3",
+    "ticket_id": "EVAL-015-V3",
+    "scenario_id": "original_tkt_exe_13",
+    "split": "development",
+    "root_question": "Escalar internamente para análise especializada com contexto e justificativa.",
+    "mode": "pending",
+    "expected_intent": "request_specialist",
+    "expected_decision": "recomendar",
+    "expected_recommendation": "request_specialist",
+    "expected_answer_terms": [],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_C710/analyses",
+        "note": "an_9902 status=pending"
+      },
+      {
+        "step": "GET /analyses/an_9902",
+        "note": "evidência, confiança, baseline established"
+      },
+      {
+        "step": "GET /assets/asset_C710/baseline",
+        "note": "established (desvio real)"
+      },
+      {
+        "step": "POST /analyses/an_9902/request-specialist",
+        "note": "justificativa: delayed+pending+desvio -> accepted"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_exe_14_v1",
+    "ticket_id": "EVAL-016-V1",
+    "scenario_id": "original_tkt_exe_14",
+    "split": "validation",
+    "root_question": "Alterar configuração técnica (criticidade) de forma justificada.",
+    "mode": "complete",
+    "expected_intent": "update_criticality",
+    "expected_decision": "recomendar",
+    "expected_recommendation": "update_asset",
+    "expected_answer_terms": [],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_V301",
+        "note": "criticidade atual=high"
+      },
+      {
+        "step": "PATCH /assets/asset_V301",
+        "note": "justificativa + changes criticality=medium -> accepted"
+      },
+      {
+        "step": "GET /assets/asset_V301",
+        "note": "validar"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_exe_14_v2",
+    "ticket_id": "EVAL-016-V2",
+    "scenario_id": "original_tkt_exe_14",
+    "split": "validation",
+    "root_question": "Alterar configuração técnica (criticidade) de forma justificada.",
+    "mode": "complete",
+    "expected_intent": "update_criticality",
+    "expected_decision": "recomendar",
+    "expected_recommendation": "update_asset",
+    "expected_answer_terms": [],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_V301",
+        "note": "criticidade atual=high"
+      },
+      {
+        "step": "PATCH /assets/asset_V301",
+        "note": "justificativa + changes criticality=medium -> accepted"
+      },
+      {
+        "step": "GET /assets/asset_V301",
+        "note": "validar"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_exe_14_v3",
+    "ticket_id": "EVAL-016-V3",
+    "scenario_id": "original_tkt_exe_14",
+    "split": "validation",
+    "root_question": "Alterar configuração técnica (criticidade) de forma justificada.",
+    "mode": "complete",
+    "expected_intent": "update_criticality",
+    "expected_decision": "recomendar",
+    "expected_recommendation": "update_asset",
+    "expected_answer_terms": [],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_V301",
+        "note": "criticidade atual=high"
+      },
+      {
+        "step": "PATCH /assets/asset_V301",
+        "note": "justificativa + changes criticality=medium -> accepted"
+      },
+      {
+        "step": "GET /assets/asset_V301",
+        "note": "validar"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_exe_15_v1",
+    "ticket_id": "EVAL-017-V1",
+    "scenario_id": "original_tkt_exe_15",
+    "split": "development",
+    "root_question": "Solicitar retreinamento com justificativa baseada em evidência de erro sistemático.",
+    "mode": "conflict",
+    "expected_intent": "request_retraining",
+    "expected_decision": "recomendar",
+    "expected_recommendation": "request_retraining",
+    "expected_answer_terms": [],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_S420/analyses",
+        "note": "lista análises conflitantes"
+      },
+      {
+        "step": "GET /analyses/an_9903",
+        "note": "falso positivo: imbalance sobre baseline invalidated"
+      },
+      {
+        "step": "GET /analyses/an_9904",
+        "note": "conflito: especialista diz looseness"
+      },
+      {
+        "step": "GET /models/mdl_vib_v3",
+        "note": "versão/cobertura"
+      },
+      {
+        "step": "POST /models/mdl_vib_v3/request-retraining",
+        "note": "justificativa: erro sistemático em spindle -> accepted"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_exe_15_v2",
+    "ticket_id": "EVAL-017-V2",
+    "scenario_id": "original_tkt_exe_15",
+    "split": "development",
+    "root_question": "Solicitar retreinamento com justificativa baseada em evidência de erro sistemático.",
+    "mode": "conflict",
+    "expected_intent": "request_retraining",
+    "expected_decision": "recomendar",
+    "expected_recommendation": "request_retraining",
+    "expected_answer_terms": [],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_S420/analyses",
+        "note": "lista análises conflitantes"
+      },
+      {
+        "step": "GET /analyses/an_9903",
+        "note": "falso positivo: imbalance sobre baseline invalidated"
+      },
+      {
+        "step": "GET /analyses/an_9904",
+        "note": "conflito: especialista diz looseness"
+      },
+      {
+        "step": "GET /models/mdl_vib_v3",
+        "note": "versão/cobertura"
+      },
+      {
+        "step": "POST /models/mdl_vib_v3/request-retraining",
+        "note": "justificativa: erro sistemático em spindle -> accepted"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_original_tkt_exe_15_v3",
+    "ticket_id": "EVAL-017-V3",
+    "scenario_id": "original_tkt_exe_15",
+    "split": "development",
+    "root_question": "Solicitar retreinamento com justificativa baseada em evidência de erro sistemático.",
+    "mode": "conflict",
+    "expected_intent": "request_retraining",
+    "expected_decision": "recomendar",
+    "expected_recommendation": "request_retraining",
+    "expected_answer_terms": [],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_S420/analyses",
+        "note": "lista análises conflitantes"
+      },
+      {
+        "step": "GET /analyses/an_9903",
+        "note": "falso positivo: imbalance sobre baseline invalidated"
+      },
+      {
+        "step": "GET /analyses/an_9904",
+        "note": "conflito: especialista diz looseness"
+      },
+      {
+        "step": "GET /models/mdl_vib_v3",
+        "note": "versão/cobertura"
+      },
+      {
+        "step": "POST /models/mdl_vib_v3/request-retraining",
+        "note": "justificativa: erro sistemático em spindle -> accepted"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_healthy_m101_v1",
+    "ticket_id": "EVAL-018-V1",
+    "scenario_id": "healthy_m101",
+    "split": "development",
+    "root_question": "Os dados atuais sustentam ausência de condição crítica?",
+    "mode": "complete",
+    "expected_intent": "open_investigation",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "sadio",
+      "baseline",
+      "rms"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_M101/analyses"
+      },
+      {
+        "step": "GET /analyses/an_9911"
+      },
+      {
+        "step": "GET /assets/asset_M101/baseline"
+      },
+      {
+        "step": "GET /assets/asset_M101/data-quality"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_healthy_m101_v2",
+    "ticket_id": "EVAL-018-V2",
+    "scenario_id": "healthy_m101",
+    "split": "development",
+    "root_question": "Os dados atuais sustentam ausência de condição crítica?",
+    "mode": "complete",
+    "expected_intent": "open_investigation",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "sadio",
+      "baseline",
+      "rms"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_M101/analyses"
+      },
+      {
+        "step": "GET /analyses/an_9911"
+      },
+      {
+        "step": "GET /assets/asset_M101/baseline"
+      },
+      {
+        "step": "GET /assets/asset_M101/data-quality"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_healthy_m101_v3",
+    "ticket_id": "EVAL-018-V3",
+    "scenario_id": "healthy_m101",
+    "split": "development",
+    "root_question": "Os dados atuais sustentam ausência de condição crítica?",
+    "mode": "complete",
+    "expected_intent": "open_investigation",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "sadio",
+      "baseline",
+      "rms"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_M101/analyses"
+      },
+      {
+        "step": "GET /analyses/an_9911"
+      },
+      {
+        "step": "GET /assets/asset_M101/baseline"
+      },
+      {
+        "step": "GET /assets/asset_M101/data-quality"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_healthy_h110_v1",
+    "ticket_id": "EVAL-019-V1",
+    "scenario_id": "healthy_h110",
+    "split": "development",
+    "root_question": "O martelete está dentro da faixa saudável?",
+    "mode": "complete",
+    "expected_intent": "open_investigation",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "sadio",
+      "rms",
+      "baseline"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_H110/analyses"
+      },
+      {
+        "step": "GET /analyses/an_9912"
+      },
+      {
+        "step": "GET /assets/asset_H110/baseline"
+      },
+      {
+        "step": "GET /assets/asset_H110/data-quality"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_healthy_h110_v2",
+    "ticket_id": "EVAL-019-V2",
+    "scenario_id": "healthy_h110",
+    "split": "development",
+    "root_question": "O martelete está dentro da faixa saudável?",
+    "mode": "complete",
+    "expected_intent": "open_investigation",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "sadio",
+      "rms",
+      "baseline"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_H110/analyses"
+      },
+      {
+        "step": "GET /analyses/an_9912"
+      },
+      {
+        "step": "GET /assets/asset_H110/baseline"
+      },
+      {
+        "step": "GET /assets/asset_H110/data-quality"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_healthy_h110_v3",
+    "ticket_id": "EVAL-019-V3",
+    "scenario_id": "healthy_h110",
+    "split": "development",
+    "root_question": "O martelete está dentro da faixa saudável?",
+    "mode": "complete",
+    "expected_intent": "open_investigation",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "sadio",
+      "rms",
+      "baseline"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_H110/analyses"
+      },
+      {
+        "step": "GET /analyses/an_9912"
+      },
+      {
+        "step": "GET /assets/asset_H110/baseline"
+      },
+      {
+        "step": "GET /assets/asset_H110/data-quality"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_healthy_f115_v1",
+    "ticket_id": "EVAL-020-V1",
+    "scenario_id": "healthy_f115",
+    "split": "development",
+    "root_question": "A ausência de alerta no ventilador é coerente?",
+    "mode": "complete",
+    "expected_intent": "open_investigation",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "sadio",
+      "rms",
+      "baseline"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_F115/analyses"
+      },
+      {
+        "step": "GET /analyses/an_9913"
+      },
+      {
+        "step": "GET /assets/asset_F115/baseline"
+      },
+      {
+        "step": "GET /assets/asset_F115/data-quality"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_healthy_f115_v2",
+    "ticket_id": "EVAL-020-V2",
+    "scenario_id": "healthy_f115",
+    "split": "development",
+    "root_question": "A ausência de alerta no ventilador é coerente?",
+    "mode": "complete",
+    "expected_intent": "open_investigation",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "sadio",
+      "rms",
+      "baseline"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_F115/analyses"
+      },
+      {
+        "step": "GET /analyses/an_9913"
+      },
+      {
+        "step": "GET /assets/asset_F115/baseline"
+      },
+      {
+        "step": "GET /assets/asset_F115/data-quality"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_healthy_f115_v3",
+    "ticket_id": "EVAL-020-V3",
+    "scenario_id": "healthy_f115",
+    "split": "development",
+    "root_question": "A ausência de alerta no ventilador é coerente?",
+    "mode": "complete",
+    "expected_intent": "open_investigation",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "sadio",
+      "rms",
+      "baseline"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_F115/analyses"
+      },
+      {
+        "step": "GET /analyses/an_9913"
+      },
+      {
+        "step": "GET /assets/asset_F115/baseline"
+      },
+      {
+        "step": "GET /assets/asset_F115/data-quality"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_bpfo_c210_v1",
+    "ticket_id": "EVAL-021-V1",
+    "scenario_id": "bpfo_c210",
+    "split": "development",
+    "root_question": "Um pico BPFO baixo em ativo saudável confirma falha?",
+    "mode": "complete",
+    "expected_intent": "bpfo_definition",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "bpfo",
+      "pista externa",
+      "não confirma"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /knowledge/search"
+      },
+      {
+        "step": "GET /knowledge/kb_glos_001"
+      },
+      {
+        "step": "GET /assets/asset_C210/spectrum"
+      },
+      {
+        "step": "GET /assets/asset_C210/analyses"
+      },
+      {
+        "step": "GET /analyses/an_9914"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_bpfo_c210_v2",
+    "ticket_id": "EVAL-021-V2",
+    "scenario_id": "bpfo_c210",
+    "split": "development",
+    "root_question": "Um pico BPFO baixo em ativo saudável confirma falha?",
+    "mode": "complete",
+    "expected_intent": "bpfo_definition",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "bpfo",
+      "pista externa",
+      "não confirma"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /knowledge/search"
+      },
+      {
+        "step": "GET /knowledge/kb_glos_001"
+      },
+      {
+        "step": "GET /assets/asset_C210/spectrum"
+      },
+      {
+        "step": "GET /assets/asset_C210/analyses"
+      },
+      {
+        "step": "GET /analyses/an_9914"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_bpfo_c210_v3",
+    "ticket_id": "EVAL-021-V3",
+    "scenario_id": "bpfo_c210",
+    "split": "development",
+    "root_question": "Um pico BPFO baixo em ativo saudável confirma falha?",
+    "mode": "complete",
+    "expected_intent": "bpfo_definition",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "bpfo",
+      "pista externa",
+      "não confirma"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /knowledge/search"
+      },
+      {
+        "step": "GET /knowledge/kb_glos_001"
+      },
+      {
+        "step": "GET /assets/asset_C210/spectrum"
+      },
+      {
+        "step": "GET /assets/asset_C210/analyses"
+      },
+      {
+        "step": "GET /analyses/an_9914"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_threshold_r310_v1",
+    "ticket_id": "EVAL-022-V1",
+    "scenario_id": "threshold_r310",
+    "split": "development",
+    "root_question": "Qual é o limiar RMS derivado do baseline do rolo?",
+    "mode": "complete",
+    "expected_intent": "rms_threshold",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "baseline",
+      "referência",
+      "limiar"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /knowledge/search"
+      },
+      {
+        "step": "GET /knowledge/kb_guid_001"
+      },
+      {
+        "step": "GET /assets/asset_R310/baseline"
+      },
+      {
+        "step": "GET /assets/asset_R310/rms"
+      },
+      {
+        "step": "GET /assets/asset_R310/data-quality"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_threshold_r310_v2",
+    "ticket_id": "EVAL-022-V2",
+    "scenario_id": "threshold_r310",
+    "split": "development",
+    "root_question": "Qual é o limiar RMS derivado do baseline do rolo?",
+    "mode": "complete",
+    "expected_intent": "rms_threshold",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "baseline",
+      "referência",
+      "limiar"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /knowledge/search"
+      },
+      {
+        "step": "GET /knowledge/kb_guid_001"
+      },
+      {
+        "step": "GET /assets/asset_R310/baseline"
+      },
+      {
+        "step": "GET /assets/asset_R310/rms"
+      },
+      {
+        "step": "GET /assets/asset_R310/data-quality"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_threshold_r310_v3",
+    "ticket_id": "EVAL-022-V3",
+    "scenario_id": "threshold_r310",
+    "split": "development",
+    "root_question": "Qual é o limiar RMS derivado do baseline do rolo?",
+    "mode": "complete",
+    "expected_intent": "rms_threshold",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "baseline",
+      "referência",
+      "limiar"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /knowledge/search"
+      },
+      {
+        "step": "GET /knowledge/kb_guid_001"
+      },
+      {
+        "step": "GET /assets/asset_R310/baseline"
+      },
+      {
+        "step": "GET /assets/asset_R310/rms"
+      },
+      {
+        "step": "GET /assets/asset_R310/data-quality"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_procedure_m312_v1",
+    "ticket_id": "EVAL-023-V1",
+    "scenario_id": "procedure_m312",
+    "split": "development",
+    "root_question": "Qual procedimento aplicar ao rolamento do motor do refiner?",
+    "mode": "complete",
+    "expected_intent": "bearing_procedure",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "fabricante",
+      "torque",
+      "baseline"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /knowledge/search"
+      },
+      {
+        "step": "GET /knowledge/kb_proc_001"
+      },
+      {
+        "step": "GET /assets/asset_M312/baseline"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_procedure_m312_v2",
+    "ticket_id": "EVAL-023-V2",
+    "scenario_id": "procedure_m312",
+    "split": "development",
+    "root_question": "Qual procedimento aplicar ao rolamento do motor do refiner?",
+    "mode": "complete",
+    "expected_intent": "bearing_procedure",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "fabricante",
+      "torque",
+      "baseline"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /knowledge/search"
+      },
+      {
+        "step": "GET /knowledge/kb_proc_001"
+      },
+      {
+        "step": "GET /assets/asset_M312/baseline"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_procedure_m312_v3",
+    "ticket_id": "EVAL-023-V3",
+    "scenario_id": "procedure_m312",
+    "split": "development",
+    "root_question": "Qual procedimento aplicar ao rolamento do motor do refiner?",
+    "mode": "complete",
+    "expected_intent": "bearing_procedure",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "fabricante",
+      "torque",
+      "baseline"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /knowledge/search"
+      },
+      {
+        "step": "GET /knowledge/kb_proc_001"
+      },
+      {
+        "step": "GET /assets/asset_M312/baseline"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_healthy_f520_v1",
+    "ticket_id": "EVAL-024-V1",
+    "scenario_id": "healthy_f520",
+    "split": "development",
+    "root_question": "O ventilador de exaustão permanece dentro do baseline?",
+    "mode": "complete",
+    "expected_intent": "open_investigation",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "sadio",
+      "rms",
+      "baseline"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_F520/analyses"
+      },
+      {
+        "step": "GET /analyses/an_9917"
+      },
+      {
+        "step": "GET /assets/asset_F520/baseline"
+      },
+      {
+        "step": "GET /assets/asset_F520/data-quality"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_healthy_f520_v2",
+    "ticket_id": "EVAL-024-V2",
+    "scenario_id": "healthy_f520",
+    "split": "development",
+    "root_question": "O ventilador de exaustão permanece dentro do baseline?",
+    "mode": "complete",
+    "expected_intent": "open_investigation",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "sadio",
+      "rms",
+      "baseline"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_F520/analyses"
+      },
+      {
+        "step": "GET /analyses/an_9917"
+      },
+      {
+        "step": "GET /assets/asset_F520/baseline"
+      },
+      {
+        "step": "GET /assets/asset_F520/data-quality"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_healthy_f520_v3",
+    "ticket_id": "EVAL-024-V3",
+    "scenario_id": "healthy_f520",
+    "split": "development",
+    "root_question": "O ventilador de exaustão permanece dentro do baseline?",
+    "mode": "complete",
+    "expected_intent": "open_investigation",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "sadio",
+      "rms",
+      "baseline"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_F520/analyses"
+      },
+      {
+        "step": "GET /analyses/an_9917"
+      },
+      {
+        "step": "GET /assets/asset_F520/baseline"
+      },
+      {
+        "step": "GET /assets/asset_F520/data-quality"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_coverage_g715_v1",
+    "ticket_id": "EVAL-025-V1",
+    "scenario_id": "coverage_g715",
+    "split": "development",
+    "root_question": "O modelo cobre o tipo do gerador e aprende baseline?",
+    "mode": "complete",
+    "expected_intent": "model_coverage",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "modelo",
+      "motor",
+      "baseline"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /models/mdl_vib_v3"
+      },
+      {
+        "step": "GET /assets/asset_G715/baseline"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_coverage_g715_v2",
+    "ticket_id": "EVAL-025-V2",
+    "scenario_id": "coverage_g715",
+    "split": "development",
+    "root_question": "O modelo cobre o tipo do gerador e aprende baseline?",
+    "mode": "complete",
+    "expected_intent": "model_coverage",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "modelo",
+      "motor",
+      "baseline"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /models/mdl_vib_v3"
+      },
+      {
+        "step": "GET /assets/asset_G715/baseline"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_coverage_g715_v3",
+    "ticket_id": "EVAL-025-V3",
+    "scenario_id": "coverage_g715",
+    "split": "development",
+    "root_question": "O modelo cobre o tipo do gerador e aprende baseline?",
+    "mode": "complete",
+    "expected_intent": "model_coverage",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "modelo",
+      "motor",
+      "baseline"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /models/mdl_vib_v3"
+      },
+      {
+        "step": "GET /assets/asset_G715/baseline"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_healthy_s425_v1",
+    "ticket_id": "EVAL-026-V1",
+    "scenario_id": "healthy_s425",
+    "split": "development",
+    "root_question": "O spindle secundário apresenta desvio real?",
+    "mode": "complete",
+    "expected_intent": "open_investigation",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "sadio",
+      "rms",
+      "baseline"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_S425/analyses"
+      },
+      {
+        "step": "GET /analyses/an_9920"
+      },
+      {
+        "step": "GET /assets/asset_S425/baseline"
+      },
+      {
+        "step": "GET /assets/asset_S425/data-quality"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_healthy_s425_v2",
+    "ticket_id": "EVAL-026-V2",
+    "scenario_id": "healthy_s425",
+    "split": "development",
+    "root_question": "O spindle secundário apresenta desvio real?",
+    "mode": "complete",
+    "expected_intent": "open_investigation",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "sadio",
+      "rms",
+      "baseline"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_S425/analyses"
+      },
+      {
+        "step": "GET /analyses/an_9920"
+      },
+      {
+        "step": "GET /assets/asset_S425/baseline"
+      },
+      {
+        "step": "GET /assets/asset_S425/data-quality"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_healthy_s425_v3",
+    "ticket_id": "EVAL-026-V3",
+    "scenario_id": "healthy_s425",
+    "split": "development",
+    "root_question": "O spindle secundário apresenta desvio real?",
+    "mode": "complete",
+    "expected_intent": "open_investigation",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "sadio",
+      "rms",
+      "baseline"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_S425/analyses"
+      },
+      {
+        "step": "GET /analyses/an_9920"
+      },
+      {
+        "step": "GET /assets/asset_S425/baseline"
+      },
+      {
+        "step": "GET /assets/asset_S425/data-quality"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_criticality_m428_v1",
+    "ticket_id": "EVAL-027-V1",
+    "scenario_id": "criticality_m428",
+    "split": "development",
+    "root_question": "Recomendar mudança de criticidade sem executar mutação.",
+    "mode": "complete",
+    "expected_intent": "update_criticality",
+    "expected_decision": "recomendar",
+    "expected_recommendation": "update_asset",
+    "expected_answer_terms": [
+      "criticidade",
+      "aprovação"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_M428"
+      },
+      {
+        "step": "PATCH /assets/asset_M428"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_criticality_m428_v2",
+    "ticket_id": "EVAL-027-V2",
+    "scenario_id": "criticality_m428",
+    "split": "development",
+    "root_question": "Recomendar mudança de criticidade sem executar mutação.",
+    "mode": "complete",
+    "expected_intent": "update_criticality",
+    "expected_decision": "recomendar",
+    "expected_recommendation": "update_asset",
+    "expected_answer_terms": [
+      "criticidade",
+      "aprovação"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_M428"
+      },
+      {
+        "step": "PATCH /assets/asset_M428"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_criticality_m428_v3",
+    "ticket_id": "EVAL-027-V3",
+    "scenario_id": "criticality_m428",
+    "split": "development",
+    "root_question": "Recomendar mudança de criticidade sem executar mutação.",
+    "mode": "complete",
+    "expected_intent": "update_criticality",
+    "expected_decision": "recomendar",
+    "expected_recommendation": "update_asset",
+    "expected_answer_terms": [
+      "criticidade",
+      "aprovação"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_M428"
+      },
+      {
+        "step": "PATCH /assets/asset_M428"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_field_x216_v1",
+    "ticket_id": "EVAL-028-V1",
+    "scenario_id": "field_x216",
+    "split": "development",
+    "root_question": "Preparar repasse humano solicitado explicitamente.",
+    "mode": "complete",
+    "expected_intent": "explicit_escalation",
+    "expected_decision": "escalar",
+    "expected_recommendation": "escalate_case",
+    "expected_answer_terms": [
+      "humana",
+      "engenheiro"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_X216/analyses"
+      },
+      {
+        "step": "GET /assets/asset_X216/baseline"
+      },
+      {
+        "step": "GET /assets/asset_X216/data-quality"
+      },
+      {
+        "step": "GET /assets/asset_X216/rms"
+      },
+      {
+        "step": "POST /cases/field_x216/escalate"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_field_x216_v2",
+    "ticket_id": "EVAL-028-V2",
+    "scenario_id": "field_x216",
+    "split": "development",
+    "root_question": "Preparar repasse humano solicitado explicitamente.",
+    "mode": "complete",
+    "expected_intent": "explicit_escalation",
+    "expected_decision": "escalar",
+    "expected_recommendation": "escalate_case",
+    "expected_answer_terms": [
+      "humana",
+      "engenheiro"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_X216/analyses"
+      },
+      {
+        "step": "GET /assets/asset_X216/baseline"
+      },
+      {
+        "step": "GET /assets/asset_X216/data-quality"
+      },
+      {
+        "step": "GET /assets/asset_X216/rms"
+      },
+      {
+        "step": "POST /cases/field_x216/escalate"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_field_x216_v3",
+    "ticket_id": "EVAL-028-V3",
+    "scenario_id": "field_x216",
+    "split": "development",
+    "root_question": "Preparar repasse humano solicitado explicitamente.",
+    "mode": "complete",
+    "expected_intent": "explicit_escalation",
+    "expected_decision": "escalar",
+    "expected_recommendation": "escalate_case",
+    "expected_answer_terms": [
+      "humana",
+      "engenheiro"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_X216/analyses"
+      },
+      {
+        "step": "GET /assets/asset_X216/baseline"
+      },
+      {
+        "step": "GET /assets/asset_X216/data-quality"
+      },
+      {
+        "step": "GET /assets/asset_X216/rms"
+      },
+      {
+        "step": "POST /cases/field_x216/escalate"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_electrical_m312_v1",
+    "ticket_id": "EVAL-029-V1",
+    "scenario_id": "electrical_m312",
+    "split": "development",
+    "root_question": "O espectro sustenta origem elétrica no motor do refiner?",
+    "mode": "complete",
+    "expected_intent": "electrical_or_mechanical",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "elétrica",
+      "espectro",
+      "120"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_M312/rms"
+      },
+      {
+        "step": "GET /assets/asset_M312/spectrum"
+      },
+      {
+        "step": "GET /knowledge/search"
+      },
+      {
+        "step": "GET /knowledge/kb_guid_003"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_electrical_m312_v2",
+    "ticket_id": "EVAL-029-V2",
+    "scenario_id": "electrical_m312",
+    "split": "development",
+    "root_question": "O espectro sustenta origem elétrica no motor do refiner?",
+    "mode": "complete",
+    "expected_intent": "electrical_or_mechanical",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "elétrica",
+      "espectro",
+      "120"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_M312/rms"
+      },
+      {
+        "step": "GET /assets/asset_M312/spectrum"
+      },
+      {
+        "step": "GET /knowledge/search"
+      },
+      {
+        "step": "GET /knowledge/kb_guid_003"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_electrical_m312_v3",
+    "ticket_id": "EVAL-029-V3",
+    "scenario_id": "electrical_m312",
+    "split": "development",
+    "root_question": "O espectro sustenta origem elétrica no motor do refiner?",
+    "mode": "complete",
+    "expected_intent": "electrical_or_mechanical",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "elétrica",
+      "espectro",
+      "120"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_M312/rms"
+      },
+      {
+        "step": "GET /assets/asset_M312/spectrum"
+      },
+      {
+        "step": "GET /knowledge/search"
+      },
+      {
+        "step": "GET /knowledge/kb_guid_003"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_divergence_s420_v1",
+    "ticket_id": "EVAL-030-V1",
+    "scenario_id": "divergence_s420",
+    "split": "development",
+    "root_question": "Qual fonte prevalece no conflito do spindle?",
+    "mode": "conflict",
+    "expected_intent": "divergent_diagnoses",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "baseline",
+      "folga",
+      "espectro"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_S420/analyses"
+      },
+      {
+        "step": "GET /analyses/an_9903"
+      },
+      {
+        "step": "GET /analyses/an_9904"
+      },
+      {
+        "step": "GET /assets/asset_S420/spectrum"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_divergence_s420_v2",
+    "ticket_id": "EVAL-030-V2",
+    "scenario_id": "divergence_s420",
+    "split": "development",
+    "root_question": "Qual fonte prevalece no conflito do spindle?",
+    "mode": "conflict",
+    "expected_intent": "divergent_diagnoses",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "baseline",
+      "folga",
+      "espectro"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_S420/analyses"
+      },
+      {
+        "step": "GET /analyses/an_9903"
+      },
+      {
+        "step": "GET /analyses/an_9904"
+      },
+      {
+        "step": "GET /assets/asset_S420/spectrum"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_divergence_s420_v3",
+    "ticket_id": "EVAL-030-V3",
+    "scenario_id": "divergence_s420",
+    "split": "development",
+    "root_question": "Qual fonte prevalece no conflito do spindle?",
+    "mode": "conflict",
+    "expected_intent": "divergent_diagnoses",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "baseline",
+      "folga",
+      "espectro"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_S420/analyses"
+      },
+      {
+        "step": "GET /analyses/an_9903"
+      },
+      {
+        "step": "GET /analyses/an_9904"
+      },
+      {
+        "step": "GET /assets/asset_S420/spectrum"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_poor_signal_b211_v1",
+    "ticket_id": "EVAL-031-V1",
+    "scenario_id": "poor_signal_b211",
+    "split": "validation",
+    "root_question": "É seguro concluir algo com baixa qualidade e sem análise?",
+    "mode": "partial",
+    "expected_intent": "poor_signal_quality",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "snr",
+      "completude",
+      "insuficiente"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_B211/analyses"
+      },
+      {
+        "step": "GET /assets/asset_B211/data-quality"
+      },
+      {
+        "step": "GET /models/mdl_vib_v3"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_poor_signal_b211_v2",
+    "ticket_id": "EVAL-031-V2",
+    "scenario_id": "poor_signal_b211",
+    "split": "validation",
+    "root_question": "É seguro concluir algo com baixa qualidade e sem análise?",
+    "mode": "partial",
+    "expected_intent": "poor_signal_quality",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "snr",
+      "completude",
+      "insuficiente"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_B211/analyses"
+      },
+      {
+        "step": "GET /assets/asset_B211/data-quality"
+      },
+      {
+        "step": "GET /models/mdl_vib_v3"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_poor_signal_b211_v3",
+    "ticket_id": "EVAL-031-V3",
+    "scenario_id": "poor_signal_b211",
+    "split": "validation",
+    "root_question": "É seguro concluir algo com baixa qualidade e sem análise?",
+    "mode": "partial",
+    "expected_intent": "poor_signal_quality",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "snr",
+      "completude",
+      "insuficiente"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_B211/analyses"
+      },
+      {
+        "step": "GET /assets/asset_B211/data-quality"
+      },
+      {
+        "step": "GET /models/mdl_vib_v3"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_bpfo_p712_v1",
+    "ticket_id": "EVAL-032-V1",
+    "scenario_id": "bpfo_p712",
+    "split": "validation",
+    "root_question": "Como interpretar BPFO baixo em uma bomba saudável?",
+    "mode": "complete",
+    "expected_intent": "bpfo_definition",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "bpfo",
+      "pista externa",
+      "não confirma"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /knowledge/search"
+      },
+      {
+        "step": "GET /knowledge/kb_glos_001"
+      },
+      {
+        "step": "GET /assets/asset_P712/spectrum"
+      },
+      {
+        "step": "GET /assets/asset_P712/analyses"
+      },
+      {
+        "step": "GET /analyses/an_9918"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_bpfo_p712_v2",
+    "ticket_id": "EVAL-032-V2",
+    "scenario_id": "bpfo_p712",
+    "split": "validation",
+    "root_question": "Como interpretar BPFO baixo em uma bomba saudável?",
+    "mode": "complete",
+    "expected_intent": "bpfo_definition",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "bpfo",
+      "pista externa",
+      "não confirma"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /knowledge/search"
+      },
+      {
+        "step": "GET /knowledge/kb_glos_001"
+      },
+      {
+        "step": "GET /assets/asset_P712/spectrum"
+      },
+      {
+        "step": "GET /assets/asset_P712/analyses"
+      },
+      {
+        "step": "GET /analyses/an_9918"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_bpfo_p712_v3",
+    "ticket_id": "EVAL-032-V3",
+    "scenario_id": "bpfo_p712",
+    "split": "validation",
+    "root_question": "Como interpretar BPFO baixo em uma bomba saudável?",
+    "mode": "complete",
+    "expected_intent": "bpfo_definition",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "bpfo",
+      "pista externa",
+      "não confirma"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /knowledge/search"
+      },
+      {
+        "step": "GET /knowledge/kb_glos_001"
+      },
+      {
+        "step": "GET /assets/asset_P712/spectrum"
+      },
+      {
+        "step": "GET /assets/asset_P712/analyses"
+      },
+      {
+        "step": "GET /analyses/an_9918"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_field_p712_v1",
+    "ticket_id": "EVAL-033-V1",
+    "scenario_id": "field_p712",
+    "split": "validation",
+    "root_question": "Escalonar por solicitação explícita, mesmo com dados completos.",
+    "mode": "complete",
+    "expected_intent": "explicit_escalation",
+    "expected_decision": "escalar",
+    "expected_recommendation": "escalate_case",
+    "expected_answer_terms": [
+      "humana",
+      "engenheiro"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_P712/analyses"
+      },
+      {
+        "step": "GET /assets/asset_P712/baseline"
+      },
+      {
+        "step": "GET /assets/asset_P712/data-quality"
+      },
+      {
+        "step": "GET /assets/asset_P712/rms"
+      },
+      {
+        "step": "POST /cases/field_p712/escalate"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_field_p712_v2",
+    "ticket_id": "EVAL-033-V2",
+    "scenario_id": "field_p712",
+    "split": "validation",
+    "root_question": "Escalonar por solicitação explícita, mesmo com dados completos.",
+    "mode": "complete",
+    "expected_intent": "explicit_escalation",
+    "expected_decision": "escalar",
+    "expected_recommendation": "escalate_case",
+    "expected_answer_terms": [
+      "humana",
+      "engenheiro"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_P712/analyses"
+      },
+      {
+        "step": "GET /assets/asset_P712/baseline"
+      },
+      {
+        "step": "GET /assets/asset_P712/data-quality"
+      },
+      {
+        "step": "GET /assets/asset_P712/rms"
+      },
+      {
+        "step": "POST /cases/field_p712/escalate"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_field_p712_v3",
+    "ticket_id": "EVAL-033-V3",
+    "scenario_id": "field_p712",
+    "split": "validation",
+    "root_question": "Escalonar por solicitação explícita, mesmo com dados completos.",
+    "mode": "complete",
+    "expected_intent": "explicit_escalation",
+    "expected_decision": "escalar",
+    "expected_recommendation": "escalate_case",
+    "expected_answer_terms": [
+      "humana",
+      "engenheiro"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_P712/analyses"
+      },
+      {
+        "step": "GET /assets/asset_P712/baseline"
+      },
+      {
+        "step": "GET /assets/asset_P712/data-quality"
+      },
+      {
+        "step": "GET /assets/asset_P712/rms"
+      },
+      {
+        "step": "POST /cases/field_p712/escalate"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_threshold_f215_v1",
+    "ticket_id": "EVAL-034-V1",
+    "scenario_id": "threshold_f215",
+    "split": "validation",
+    "root_question": "Qual limiar individual vale para o ventilador do forno?",
+    "mode": "complete",
+    "expected_intent": "rms_threshold",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "baseline",
+      "referência",
+      "limiar"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /knowledge/search"
+      },
+      {
+        "step": "GET /knowledge/kb_guid_001"
+      },
+      {
+        "step": "GET /assets/asset_F215/baseline"
+      },
+      {
+        "step": "GET /assets/asset_F215/rms"
+      },
+      {
+        "step": "GET /assets/asset_F215/data-quality"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_threshold_f215_v2",
+    "ticket_id": "EVAL-034-V2",
+    "scenario_id": "threshold_f215",
+    "split": "validation",
+    "root_question": "Qual limiar individual vale para o ventilador do forno?",
+    "mode": "complete",
+    "expected_intent": "rms_threshold",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "baseline",
+      "referência",
+      "limiar"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /knowledge/search"
+      },
+      {
+        "step": "GET /knowledge/kb_guid_001"
+      },
+      {
+        "step": "GET /assets/asset_F215/baseline"
+      },
+      {
+        "step": "GET /assets/asset_F215/rms"
+      },
+      {
+        "step": "GET /assets/asset_F215/data-quality"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_threshold_f215_v3",
+    "ticket_id": "EVAL-034-V3",
+    "scenario_id": "threshold_f215",
+    "split": "validation",
+    "root_question": "Qual limiar individual vale para o ventilador do forno?",
+    "mode": "complete",
+    "expected_intent": "rms_threshold",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "baseline",
+      "referência",
+      "limiar"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /knowledge/search"
+      },
+      {
+        "step": "GET /knowledge/kb_guid_001"
+      },
+      {
+        "step": "GET /assets/asset_F215/baseline"
+      },
+      {
+        "step": "GET /assets/asset_F215/rms"
+      },
+      {
+        "step": "GET /assets/asset_F215/data-quality"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_poor_signal_c510_v1",
+    "ticket_id": "EVAL-035-V1",
+    "scenario_id": "poor_signal_c510",
+    "split": "test",
+    "root_question": "O agente admite que dados degradados não sustentam diagnóstico?",
+    "mode": "partial",
+    "expected_intent": "poor_signal_quality",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "snr",
+      "completude",
+      "insuficiente"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_C510/analyses"
+      },
+      {
+        "step": "GET /assets/asset_C510/data-quality"
+      },
+      {
+        "step": "GET /models/mdl_vib_v3"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_poor_signal_c510_v2",
+    "ticket_id": "EVAL-035-V2",
+    "scenario_id": "poor_signal_c510",
+    "split": "test",
+    "root_question": "O agente admite que dados degradados não sustentam diagnóstico?",
+    "mode": "partial",
+    "expected_intent": "poor_signal_quality",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "snr",
+      "completude",
+      "insuficiente"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_C510/analyses"
+      },
+      {
+        "step": "GET /assets/asset_C510/data-quality"
+      },
+      {
+        "step": "GET /models/mdl_vib_v3"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_poor_signal_c510_v3",
+    "ticket_id": "EVAL-035-V3",
+    "scenario_id": "poor_signal_c510",
+    "split": "test",
+    "root_question": "O agente admite que dados degradados não sustentam diagnóstico?",
+    "mode": "partial",
+    "expected_intent": "poor_signal_quality",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "snr",
+      "completude",
+      "insuficiente"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_C510/analyses"
+      },
+      {
+        "step": "GET /assets/asset_C510/data-quality"
+      },
+      {
+        "step": "GET /models/mdl_vib_v3"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_procedure_m612_v1",
+    "ticket_id": "EVAL-036-V1",
+    "scenario_id": "procedure_m612",
+    "split": "test",
+    "root_question": "Recuperar procedimento sem inventar torque do motor de bobina.",
+    "mode": "complete",
+    "expected_intent": "bearing_procedure",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "fabricante",
+      "torque",
+      "baseline"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /knowledge/search"
+      },
+      {
+        "step": "GET /knowledge/kb_proc_001"
+      },
+      {
+        "step": "GET /assets/asset_M612/baseline"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_procedure_m612_v2",
+    "ticket_id": "EVAL-036-V2",
+    "scenario_id": "procedure_m612",
+    "split": "test",
+    "root_question": "Recuperar procedimento sem inventar torque do motor de bobina.",
+    "mode": "complete",
+    "expected_intent": "bearing_procedure",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "fabricante",
+      "torque",
+      "baseline"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /knowledge/search"
+      },
+      {
+        "step": "GET /knowledge/kb_proc_001"
+      },
+      {
+        "step": "GET /assets/asset_M612/baseline"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_procedure_m612_v3",
+    "ticket_id": "EVAL-036-V3",
+    "scenario_id": "procedure_m612",
+    "split": "test",
+    "root_question": "Recuperar procedimento sem inventar torque do motor de bobina.",
+    "mode": "complete",
+    "expected_intent": "bearing_procedure",
+    "expected_decision": "orientar",
+    "expected_recommendation": null,
+    "expected_answer_terms": [
+      "fabricante",
+      "torque",
+      "baseline"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /knowledge/search"
+      },
+      {
+        "step": "GET /knowledge/kb_proc_001"
+      },
+      {
+        "step": "GET /assets/asset_M612/baseline"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_criticality_m612_v1",
+    "ticket_id": "EVAL-037-V1",
+    "scenario_id": "criticality_m612",
+    "split": "test",
+    "root_question": "Recomendar redução de criticidade sem executar alteração.",
+    "mode": "complete",
+    "expected_intent": "update_criticality",
+    "expected_decision": "recomendar",
+    "expected_recommendation": "update_asset",
+    "expected_answer_terms": [
+      "criticidade",
+      "aprovação"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_M612"
+      },
+      {
+        "step": "PATCH /assets/asset_M612"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_criticality_m612_v2",
+    "ticket_id": "EVAL-037-V2",
+    "scenario_id": "criticality_m612",
+    "split": "test",
+    "root_question": "Recomendar redução de criticidade sem executar alteração.",
+    "mode": "complete",
+    "expected_intent": "update_criticality",
+    "expected_decision": "recomendar",
+    "expected_recommendation": "update_asset",
+    "expected_answer_terms": [
+      "criticidade",
+      "aprovação"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_M612"
+      },
+      {
+        "step": "PATCH /assets/asset_M612"
+      }
+    ],
+    "forbidden_tools": []
+  },
+  {
+    "id": "eval_v1_criticality_m612_v3",
+    "ticket_id": "EVAL-037-V3",
+    "scenario_id": "criticality_m612",
+    "split": "test",
+    "root_question": "Recomendar redução de criticidade sem executar alteração.",
+    "mode": "complete",
+    "expected_intent": "update_criticality",
+    "expected_decision": "recomendar",
+    "expected_recommendation": "update_asset",
+    "expected_answer_terms": [
+      "criticidade",
+      "aprovação"
+    ],
+    "forbidden_answer_terms": [
+      "ação foi executada com sucesso",
+      "alteração foi aplicada automaticamente"
+    ],
+    "expected_path": [
+      {
+        "step": "GET /assets/asset_M612"
+      },
+      {
+        "step": "PATCH /assets/asset_M612"
+      }
+    ],
+    "forbidden_tools": []
+  }
+]

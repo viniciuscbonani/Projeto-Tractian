@@ -1,0 +1,68 @@
+{
+  "dataset_version": "v1",
+  "schema_version": 1,
+  "checksum_sha256": "a7ec2c04c600e4d6914ac47ccafc39f4ac1b36e6d7244c78e169244bc31b3bba",
+  "split_policy": "grouped_by_asset_and_scenario",
+  "case_count": 111,
+  "scenario_count": 37,
+  "variant_count_per_scenario": 3,
+  "source_inventory": {
+    "assets": 26,
+    "analyses": 24,
+    "abnormal_analyses": 10,
+    "healthy_analyses": 14,
+    "baselines": 26,
+    "rms_samples": 775,
+    "spectra": 25,
+    "data_quality_records": 26,
+    "knowledge_documents": 5,
+    "model_versions": 1
+  },
+  "splits": {
+    "development": {
+      "cases": 60,
+      "scenarios": 20,
+      "assets": 15
+    },
+    "validation": {
+      "cases": 27,
+      "scenarios": 9,
+      "assets": 5
+    },
+    "test": {
+      "cases": 24,
+      "scenarios": 8,
+      "assets": 5
+    }
+  },
+  "decisions": {
+    "escalar": 12,
+    "orientar": 75,
+    "recomendar": 24
+  },
+  "intents": {
+    "bearing_procedure": 9,
+    "bpfo_definition": 9,
+    "break_without_alert": 3,
+    "divergent_diagnoses": 6,
+    "electrical_or_mechanical": 6,
+    "explicit_escalation": 9,
+    "model_coverage": 6,
+    "open_investigation": 15,
+    "poor_signal_quality": 9,
+    "possible_false_positive": 3,
+    "reprocess": 3,
+    "request_retraining": 3,
+    "request_specialist": 3,
+    "rms_threshold": 9,
+    "rms_without_insight": 3,
+    "stale_after_maintenance": 3,
+    "symptom_without_baseline": 3,
+    "update_criticality": 9
+  },
+  "notes": [
+    "inputs.json não contém gabarito e pode ser fornecido ao runner.",
+    "expected.json só deve ser carregado depois das execuções.",
+    "O split de teste é congelado e não deve orientar ajustes de prompt."
+  ]
+}

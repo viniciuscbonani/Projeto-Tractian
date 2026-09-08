@@ -38,8 +38,8 @@ O cliente propaga `x-user-id` e `seed`, valida respostas e preserva o envelope c
 
 ### 2.3 Contratos com Pydantic
 
-Pydantic valida entradas, envelopes, estado, eventos de tool, evidências, gates, ações,
-avaliação de runtime e resultado consolidado.
+Pydantic valida entradas, envelopes, estado, eventos de tool, evidências, relatório técnico,
+recomendações, parecer do juiz e resultado consolidado.
 
 ---
 
@@ -53,15 +53,13 @@ prompt.
 
 ### 3.2 Acesso ao LLM por interface compatível com OpenAI
 
-Provedor, endpoint, modelo e parâmetros são definidos por configuração. Classificador,
-especialistas, redator e avaliador de runtime podem usar prompts ou modelos distintos sem
-alterar o grafo.
+Provedor, endpoint, modelo e parâmetros são definidos por configuração. Classificador, agente de
+fontes, investigador, juiz e redator possuem variáveis e prompts próprios.
 
 ### 3.3 Sistema multiagente
 
-O sistema reúne especialistas de contextualização, investigação e execução, coordenados
-pelo grafo. Contexto, gates, políticas e persistência são componentes determinísticos, não
-agentes adicionais.
+O sistema possui cinco agentes: classificador, agente de fontes, investigador, juiz e redator. Contexto, gate de
+suficiência, validação final e persistência são componentes locais, não agentes adicionais.
 
 ---
 
@@ -81,17 +79,17 @@ adotado não depende de JSONL nem de uma plataforma externa de tracing.
 
 ## 5. Avaliação
 
-### 5.1 Avaliação de runtime dentro do fluxo
+### 5.1 Revisão antes da redação
 
-Antes de entregar a resposta, verificações determinísticas e um LLM-as-a-judge direto
-produzem um parecer estruturado: aprovar, reescrever, investigar mais ou escalar. Ações
-irreversíveis passam antes por um gate determinístico próprio.
+O LLM-as-a-judge recebe o relatório técnico antes do redator e produz um parecer estruturado:
+aprovar, revisar classificação/fontes/investigação ou escalar. Um piso local impede aprovação sem evidência. O fluxo não
+executa ações irreversíveis.
 
 ### 5.2 Benchmark com `pytest` e DeepEval
 
-O benchmark externo avalia o agente inteiro, inclusive o gate e o avaliador de runtime:
+O benchmark externo avalia o agente inteiro, inclusive o gate e o parecer do juiz:
 
-- `pytest` e Python para decisão, tools, argumentos, permissões, schemas e ações;
+- `pytest` e Python para decisão, leituras, recomendações, schemas e ausência de mutações;
 - DeepEval para fundamentação, honestidade, completude e outros critérios semânticos.
 
 O gabarito é usado somente no benchmark; nunca entra no estado do atendimento.
@@ -100,11 +98,8 @@ O gabarito é usado somente no benchmark; nunca entra no estado do atendimento.
 
 ## 6. Frontend em React
 
-A interface possui duas áreas:
-
-- cliente: persona de demonstração, abertura de chamado, progresso, resposta e histórico;
-- administração: checkpoints, tools, evidências, gates, avaliação de runtime, benchmark e
-  experimentos.
+A interface possui uma única área interna de análises: inicia uma simulação, acompanha os cinco
+agentes e mostra relatório, juiz, recomendações, prévia da resposta e benchmark.
 
 O frontend usa React com TypeScript e recebe atualizações de progresso pela API própria.
 
@@ -129,7 +124,7 @@ Python no mesmo processo do agente.
 | Orquestração | LangGraph | fluxo multiagente e checkpoints |
 | Persistência | SQLite | histórico operacional e sessões |
 | Interface de LLM | wire format OpenAI | configuração independente de provedor |
-| Avaliação de runtime | regras + LLM-as-a-judge | revisão anterior à entrega |
+| Juiz | LLM forte + piso local | revisão do relatório antes da redação |
 | Benchmark objetivo | `pytest` | métricas determinísticas e regressão |
 | Benchmark semântico | DeepEval | critérios avaliados por LLM |
-| Frontend | React + TypeScript | áreas de cliente e administração |
+| Frontend | React + TypeScript | painel interno de análises |

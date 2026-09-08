@@ -1,11 +1,10 @@
 # Features
 
-Organização vertical das telas e regras do frontend:
+Organização vertical da área interna:
 
-- `personas`: entrada de demonstração e seleção de identidade;
-- `client`: abertura e histórico de chamados;
-- `runs`: progresso e resultado de uma execução;
-- `admin`: inspeção técnica de checkpoints e tools;
-- `evals`: benchmark, comparação e gráficos.
+- início de análise a partir de caso e contexto adicional;
+- acompanhamento dos cinco agentes;
+- relatório técnico, parecer do juiz, recomendação e prévia da resposta;
+- histórico, benchmark e auditoria técnica recolhível.
 
 Cada feature agrupa seus próprios componentes, hooks e testes.

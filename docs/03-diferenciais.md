@@ -6,7 +6,7 @@ Registra os elementos que diferenciam a solução de um agente básico com tools
 
 ## 1. Gate determinístico de suficiência
 
-Antes de permitir uma conclusão ou ação, o sistema verifica por código se a evidência
+Antes de permitir uma conclusão ou recomendação, o sistema verifica por código se a evidência
 necessária está disponível.
 
 O gate considera, no mínimo:
@@ -14,8 +14,7 @@ O gate considera, no mínimo:
 - `mode` e campos presentes nas consultas decisivas;
 - conflitos ainda não resolvidos;
 - compatibilidade entre qualidade observada e requisitos do modelo;
-- evidência exigida para a conclusão ou ação proposta;
-- permissão aplicável quando houver impacto.
+- evidência exigida para a conclusão ou recomendação proposta.
 
 Uma resposta `partial` não é rejeitada automaticamente: ela pode sustentar uma conclusão se
 contiver todos os campos decisivos para aquele ramo. O gate mede condições observáveis, não
@@ -23,20 +22,20 @@ uma confiança subjetiva declarada pelo LLM.
 
 ---
 
-## 2. Avaliação de runtime antes da entrega
+## 2. Juiz antes do redator
 
-Toda resposta provisória passa por avaliação antes de chegar ao cliente:
+Todo relatório técnico passa por avaliação antes de chegar ao redator:
 
-1. verificações determinísticas conferem schema, evidências, lacunas, permissões e
-   consistência com o gate;
-2. um LLM-as-a-judge direto avalia fundamentação, honestidade, completude e excesso de
+1. verificações locais conferem evidências, lacunas e consistência com o gate;
+2. um LLM-as-a-judge forte avalia fundamentação, honestidade, completude e excesso de
    confiança;
-3. o parecer estruturado escolhe entre aprovar, reescrever, investigar mais ou escalar.
+3. o parecer estruturado escolhe entre aprovar, investigar mais ou escalar;
+4. somente então um modelo menor redige a apresentação.
 
-Reescrita e retorno à investigação têm limites explícitos. Ausência real de evidência não é
-resolvida melhorando a redação: produz escalonamento.
+O retorno à investigação tem limite explícito. Ausência real de evidência não é resolvida
+melhorando a redação: produz revisão humana.
 
-O avaliador de runtime é um guardrail e também é objeto do benchmark externo. Sua aprovação
+O juiz é um guardrail e também é objeto do benchmark externo. Sua aprovação
 não constitui prova independente de correção.
 
 ---
@@ -66,8 +65,9 @@ operacionais estruturados no estado compartilhado:
 - lacunas e conflitos;
 - regra aplicada;
 - conclusão intermediária e próximo nó;
-- ação proposta, autorização, execução e validação;
-- gate e avaliação de runtime.
+- recomendação de ação e sua justificativa;
+- gate e parecer do juiz;
+- modelo, latência, fallback e erro de cada agente.
 
 O checkpointer preserva snapshots sucessivos da mesma execução. No final, um resultado
 consolidado referencia o histórico necessário aos evals e à interface administrativa.
@@ -82,21 +82,18 @@ O pacote de escalonamento contém:
 - consultas realizadas e condição dos envelopes;
 - evidências, hipóteses eliminadas, lacunas e conflitos;
 - motivo exato que impediu a conclusão segura;
-- ações já executadas e seus resultados.
+- recomendações que dependem de aprovação humana.
 
-Se o usuário não possuir a permissão `escalate`, o sistema não afirma que executou o
-endpoint. Ele prepara o pacote e informa a necessidade de encaminhamento por alguém
-autorizado.
+O sistema não chama o endpoint de escalonamento. Ele prepara o pacote e informa a necessidade de
+encaminhamento por alguém autorizado.
 
 ---
 
-## 6. Interface como cockpit, não apenas chat
+## 6. Interface interna de análise
 
-O frontend React separa duas experiências:
-
-- cliente: abrir e acompanhar um chamado com explicações adequadas ao seu papel;
-- administração: inspecionar grafo, checkpoints, tools, evidências, gates, avaliações e
-  resultados experimentais.
+O frontend React possui uma única experiência para o time da TRACTIAN: iniciar uma simulação,
+acompanhar os cinco agentes, inspecionar fontes, relatório e juiz e visualizar uma prévia da resposta. Não
+há chat. A parte técnica fica recolhida para não competir com o relatório.
 
 A entrada inicial é uma persona de demonstração ligada a um `x-user-id` válido. O nome
 exibido nunca concede permissão. A seleção de persona não constitui autenticação.

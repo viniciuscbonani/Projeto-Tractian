@@ -57,6 +57,10 @@ A decisão final se enquadra em três categorias:
 
 O agente precisa tomar **a mesma decisão que um engenheiro tomaria**.
 
+> O quadro acima descreve o desafio original. No recorte adotado após a revisão com a liga,
+> **Agir** foi substituído por **Recomendar**: o sistema prepara a ação e a justificativa, mas a
+> execução fica fora do agente e depende de aprovação humana.
+
 ---
 
 ## 4. Atores
@@ -318,17 +322,19 @@ Critérios declarados pela parceira e pelo material acadêmico:
 
 ## 8. Escopo do problema
 
-**Dentro do escopo:**
+**Dentro do escopo implementado:**
 
 - chamados de clientes sobre comportamento de monitoramento e diagnóstico de ativos
 - investigação via consulta à API
-- decisão entre orientar, agir e escalar
-- execução de ações na plataforma, quando justificadas e permitidas
+- decisão entre orientar, recomendar e escalar
+- recomendação estruturada de ações, sempre sujeita a aprovação humana
+- painel interno de análise e prévia de como a resposta seria apresentada
 - avaliação sistemática da qualidade e confiabilidade do agente construído
 
 **Fora do escopo:**
 
 - conversas multi-turno com o cliente além do necessário para o chamado
+- chat voltado ao cliente e execução automática de ações
 - interação com sistemas externos à API fornecida
 - diagnóstico de vibração a partir de sinal bruto (o diagnóstico já vem pronto do modelo;
   o agente interpreta, não diagnostica)
@@ -342,12 +348,12 @@ As principais decisões derivadas do entendimento do problema são:
 
 | questão | encaminhamento | registro |
 |---|---|---|
-| Modo de operação | agente autônomo no escopo da API, com escalonamento humano quando a evidência for insuficiente | `04-arquitetura.md` |
+| Modo de operação | ferramenta interna multiagente, com recomendação ou revisão humana quando necessário | `04-arquitetura.md` |
 | Fontes divergentes | arbitragem determinística; divergência real não resolvida exige escalonamento | `03-diferenciais.md` |
 | Evidência suficiente | gate determinístico antes da composição da resposta | `03-diferenciais.md` e `04-arquitetura.md` |
 | Pacote de escalonamento | leva consultas, evidências, lacunas, conflitos e ponto de interrupção | `04-arquitetura.md` |
 | Regras de negócio | consulta sob demanda à base de conhecimento; resposta degradada permanece explícita | `04-arquitetura.md` |
-| Ordem da investigação | política codificada como subgrafo, não deixada apenas no prompt | `04-arquitetura.md` |
+| Ordem da investigação | plano do investigador LLM limitado por catálogo de tools e piso de evidência | `04-arquitetura.md` |
 | Hipótese experimental | comparar o mesmo grafo com o gate ligado e desligado | `03-diferenciais.md` |
 
 ---
